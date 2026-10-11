@@ -5,9 +5,14 @@ import adamImage from '../assets/adam.png'
 type LandingProps = {
   darkMode: boolean
   onToggleDarkMode: () => void
+  onBegin: () => void
 }
 
-function Landing({ darkMode, onToggleDarkMode }: LandingProps) {
+function Landing({ 
+  darkMode, 
+  onToggleDarkMode,
+  onBegin, 
+}: LandingProps) {
   const [menuOpen, setMenuOpen] = useState(false)
 
   return (
@@ -70,11 +75,7 @@ function Landing({ darkMode, onToggleDarkMode }: LandingProps) {
 
         <button 
           className="begin-button"
-          onClick={() => {
-            document.getElementById('skills')?.scrollIntoView({
-              behavior: 'smooth'
-            })
-          }}
+          onClick={onBegin}
         >
           Begin
         </button>

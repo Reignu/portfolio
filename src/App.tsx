@@ -1,5 +1,6 @@
 import './App.css'
 import Landing from './sections/Landing'
+import Skills from './sections/Skills'
 import { useEffect, useState } from 'react'
 
 function App() {
@@ -11,17 +12,25 @@ function App() {
     localStorage.setItem('darkMode', String(darkMode))
   }, [darkMode])
 
+  const [skillsRevealing, setSkillsRevealing] = useState(false)
+
   return (
     <div className={darkMode ? 'app dark' : 'app'}>
       <Landing 
         darkMode={darkMode}
         onToggleDarkMode={() => setDarkMode(!darkMode)}
+        onBegin={() => {
+          setSkillsRevealing(true)
+
+          document.getElementById('skills')?.scrollIntoView({
+            behavior: 'smooth',
+          })
+        }}
       />
 
-      <section id="skills" className="placeholder-section">
-        <h1>Skills</h1>
-        <p>Your journey starts here...</p>
-      </section>
+      <Skills
+        revealing={skillsRevealing}
+      />
     </div>
   )
 }

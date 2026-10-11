@@ -1,3 +1,5 @@
+/* Landing */
+
 .landing {
   position: relative;
   min-height: 100svh;
@@ -221,5 +223,230 @@
 
   .navbar-links.menu-open {
     display: flex;
+  }
+}
+
+/* Skills */
+
+.skills-section {
+  min-height: 100svh;
+  padding: 6rem 2rem 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: #f5f0e6;
+  color: #222;
+}
+
+.skills-intro {
+  margin-bottom: 2rem;
+}
+
+.skills-eyebrow {
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  font-weight: 700;
+}
+
+.skills-intro h1 {
+  margin: 0.5rem 0;
+  font-size: clamp(2.5rem, 6vw, 4rem);
+}
+
+.skills-scene {
+  width: min(100%, 800px);
+  min-height: 320px;
+  display: grid;
+  place-items: center;
+  border: 2px dashed #aaa;
+  border-radius: 24px;
+}
+
+.skills-scene-placeholder {
+  padding: 1rem;
+  color: #666;
+}
+
+.app.dark .skills-section {
+  background: #1e2430;
+  color: #f5f0e6;
+}
+
+.app.dark .skills-scene {
+  border-color: #657087;
+}
+
+@media (max-width: 600px) {
+  .skills-section {
+    padding: 5rem 1rem 2rem;
+  }
+
+  .skills-scene {
+    min-height: 260px;
+  }
+}
+
+
+.skills-character {
+  position: relative;
+  width: min(70vw, 340px);
+  transform: scale(1);
+  transform-origin: center 45%;
+  transition: transform 900ms ease;
+}
+
+.skills-character img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.skills-scene.revealed .skills-character {
+  transform: scale(1.2);
+}
+
+.skills-badges {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+  animation: badge-appear 500ms ease both;
+}
+
+.skill-badge {
+  padding: 0.8rem 1.2rem;
+  border: 2px solid #b88b42;
+  border-radius: 50%;
+  background: #25344a;
+  color: white;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 180ms ease;
+}
+
+.skill-badge:hover {
+  transform: translateY(-3px);
+}
+
+.skills-reveal-button {
+  margin-top: 1.5rem;
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: 999px;
+  background: #25344a;
+  color: white;
+  cursor: pointer;
+}
+
+.badge-details {
+  position: relative;
+  width: min(100%, 420px);
+  margin-top: 1.5rem;
+  padding: 1.5rem;
+  border: 1px solid #b88b42;
+  border-radius: 16px;
+  background: white;
+  color: #222;
+}
+
+.badge-close {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.75rem;
+  border: none;
+  background: transparent;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+@keyframes badge-appear {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.app.dark .badge-details {
+  background: #30394a;
+  color: #f5f0e6;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skills-character,
+  .skill-badge {
+    transition: none;
+  }
+
+  .skills-badges {
+    animation: none;
+  }
+}
+
+
+.skills-scene {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.skills-character {
+  position: relative;
+  width: min(70vw, 340px);
+  transform: scale(1);
+  transform-origin: center 45%;
+  transition: transform 1.2s ease;
+}
+
+.skills-character .character-pose {
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: opacity 450ms ease;
+}
+
+.skills-character .character-open {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+}
+
+.skills-character .character-pose.pose-hidden {
+  opacity: 0;
+}
+
+.skills-character .character-open.pose-visible {
+  opacity: 1;
+}
+
+.skills-scene.zooming .skills-character {
+  transform: scale(1.2);
+}
+
+.skills-badges {
+  position: relative;
+  z-index: 2;
+  animation: badge-appear 500ms ease both;
+}
+
+@media (max-width: 600px) {
+  .skills-character {
+    width: min(78vw, 300px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skills-character,
+  .skills-character .character-pose {
+    transition: none;
   }
 }
